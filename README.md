@@ -1,2 +1,13 @@
-# Coding-sound-waves
-Approximation sound waves
+# TASK
+  It is required to develop a program which can be used to to reconstruct the values of sound amplitudes according to the given initial and The program should be used to reconstruct the values of amplitudes and the number of reports. Also, when recovery of intermediate values of amplitudes it is necessary to superimpose the watermark set in advance. With the help of the watermark it will be possible to determine the authorship of an audio track.
+
+# DESCRIPTION OF THE ALGORITHM FOR RECONSTRUCTING INTERMEDIATE VALUES OF THE WAVE
+  A sound is a set of vibrations with a certain frequency (pitch) and amplitude (volume). The program uses the following input data to recreate the The input data used to reconstruct the amplitudes are the initial amplitude amplitude, the final amplitude value, the number of reports for each half-wave. And also the value of the fragment watermark to be applied.
+  To determine the intermediate values of the amplitudes the sine function with the set values in the file brad.inc. The reconstructed wave values are calculated through the values in the file brad.inc. The values from the table are taken with a certain step by the number of intermediate values of the wave. Then, to restore the intermediate value of of the amplitude, the value from the table is multiplied by the value of the first amplitude and divided in half (since the upper and lower parts of the half-wave are mirror images of each other in this model, it makes it makes sense to read the values for the upper half-wave only, and for the lower half-wave simply subtract the existing values from the amplitude value). The same repeat for the second half-wave, but with allowance for the fact that in it values are increasing, not decreasing, and the final value of amplitude.
+  If the number of reports for these half-waves is even, an additional report is placed in the center of the half-wave with half value (twice respectively for two half-waves).
+  Below is a graphical representation of an example of a reconstructed wave. The inputs used are the following values: initial amplitude - 40, final amplitude - 100, number of reports per half-wave - 10.
+  ![image](https://user-images.githubusercontent.com/86018711/182868890-d1896071-e701-4d6e-ad1d-fa900b69fe4f.png)
+
+# DESCRIPTION OF THE WATERMARKING ALGORITHM
+  The maximum value, FF, is used as the watermark. This value is put in the middle of the half-wave instead of the middle value. Below is a visualization of an example of wave reconstruction with watermarks applied.
+  ![image](https://user-images.githubusercontent.com/86018711/182869100-3745d9f5-cbfe-4ef6-8845-e1a456267438.png)
